@@ -13,8 +13,9 @@ print(df.columns)  # Uncomment to check available column names
 
 app.layout = html.Div([
     html.Div(children='My First App with Data'),
+    dcc.Graph(figure=px.histogram(df, x='PM25', y='TEMP', histfunc='avg')),
     dash_table.DataTable(data=df.to_dict('records'), page_size=10),
-    dcc.Graph(figure=px.histogram(df, x='PM25', y='TEMP', histfunc='avg'))  # Assuming these columns exist
+    
 ])
 
 # Run the app
