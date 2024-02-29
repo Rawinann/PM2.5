@@ -2,6 +2,7 @@ from dash import Dash, html, dash_table, dcc
 import plotly.express as px
 import pandas as pd
 
+
 # Incorporate data
 df = pd.read_csv('cleaned_air4thai.csv')
 
