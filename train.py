@@ -1,21 +1,23 @@
 import pandas as pd
 from pycaret.regression import *
 
-# Load your cleaned data
-data = pd.read_csv('cleaned_air4thai.csv')
+# อ่านข้อมูลจากไฟล์ CSV
+file_path = 'cleaned_air4thai.csv'
+data = pd.read_csv(file_path)
 
-# Check for missing values in the target column
-missing_values = data['PM25'].isnull().sum()
+# ลบแถวที่มีค่าที่ขาดหายไปใน 'PM25'
+data = data.dropna(subset=['PM25'])
 
-if missing_values > 0:
-    # If there are missing values, remove the respective rows
-    data = data.dropna(subset=['PM25'])
-    print(f"Removed {missing_values} rows with missing values in the target column 'PM25'.")
+# โปรแกรม Setup ด้วยข้อมูล
+regression_setup = setup(data, target='PM25', session_id=123, fold_strategy='timeseries', fold=3, data_split_shuffle=False, fold_shuffle=False)
 
-# Set up the PyCaret environment
-s = setup(data, target='PM25', session_id=123)
-
-# Continue with the rest of your PyCaret workflow
+# เลือกและเทรนโมเดล
 best_model = compare_models()
-tuned_model = tune_model(best_model)
-evaluate_model(tuned_model)
+
+# สร้าง DataFrame สำหรับทำนาย PM25 ล่วงหน้า 7 วัน
+predict_data = data.copy()
+predict_data['DATETIMEDATA'] = pd.to_datetime(predict_data['DATETIMEDATA']) + pd.DateOffset(days=7)
+
+# ทำนาย PM25 ล่วงหน้า 7 วัน
+predictions = predict_model(best_model, data=predict_data)
+print(predictions)
