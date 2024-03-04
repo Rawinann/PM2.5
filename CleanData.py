@@ -1,6 +1,6 @@
 import pandas as pd
 
-df = pd.read_csv('air4thai_08t_2023-09-01_2024-02-27.csv')
+df = pd.read_csv('air4thai_44t_2023-09-01_2024-02-27.csv')
 
 print("Initial Data:")
 print(df)

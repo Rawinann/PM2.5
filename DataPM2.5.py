@@ -7,7 +7,7 @@ datas = []
 
 def get_station_data(station_id):
 
-    station_id = station_id
+    station_id = "44t"
     param = "PM25,PM10,O3,CO,NO2,SO2,WS,TEMP,RH,WD"
     data_type = "hr"
     start_date = "2023-09-01"
