@@ -4414,3 +4414,93 @@ Alternately, you can install this by running `pip install pycaret[models]`
 2024-03-06 10:47:31,345:INFO:Preloading libraries
 2024-03-06 10:47:31,374:INFO:Copying training dataset
 2024-03-06 10:47:31,374:INFO:Plot type: pipeline
+2024-03-06 16:48:01,766:WARNING:
+'cuml' is a soft dependency and not included in the pycaret installation. Please run: `pip install cuml` to install.
+2024-03-06 16:48:01,767:WARNING:
+'cuml' is a soft dependency and not included in the pycaret installation. Please run: `pip install cuml` to install.
+2024-03-06 16:48:01,767:WARNING:
+'cuml' is a soft dependency and not included in the pycaret installation. Please run: `pip install cuml` to install.
+2024-03-06 16:48:01,767:WARNING:
+'cuml' is a soft dependency and not included in the pycaret installation. Please run: `pip install cuml` to install.
+2024-03-06 16:48:02,160:INFO:Initializing load_model()
+2024-03-06 16:48:02,160:INFO:load_model(model_name=final_pm25_prediction_model, platform=None, authentication=None, verbose=True)
+2024-03-06 16:48:02,445:INFO:Initializing predict_model()
+2024-03-06 16:48:02,445:INFO:predict_model(self=<pycaret.regression.oop.RegressionExperiment object at 0x0000019B37C2A890>, estimator=Pipeline(memory=Memory(location=None),
+         steps=[('numerical_imputer',
+                 TransformerWrapper(include=['hour', 'day_of_week', 'day',
+                                             'month'],
+                                    transformer=SimpleImputer())),
+                ('categorical_imputer',
+                 TransformerWrapper(include=['stationID'],
+                                    transformer=SimpleImputer(strategy='most_frequent'))),
+                ('onehot_encoding',
+                 TransformerWrapper(include=['stationID'],
+                                    transformer=OneHotEncoder(cols=['stationID'],
+                                                              handle_missing='return_nan',
+                                                              use_cat_names=True))),
+                ('trained_model',
+                 ExtraTreesRegressor(n_jobs=-1, random_state=123))]), probability_threshold=None, encoded_labels=False, raw_score=False, round=4, verbose=True, ml_usecase=None, preprocess=True, encode_labels=<function _SupervisedExperiment.predict_model.<locals>.encode_labels at 0x0000019B5CFB2B60>)
+2024-03-06 16:48:02,445:INFO:Checking exceptions
+2024-03-06 16:48:02,445:INFO:Preloading libraries
+2024-03-06 16:48:02,447:INFO:Set up data.
+2024-03-06 16:48:02,455:INFO:Set up index.
+2024-03-06 16:55:29,231:WARNING:
+'cuml' is a soft dependency and not included in the pycaret installation. Please run: `pip install cuml` to install.
+2024-03-06 16:55:29,235:WARNING:
+'cuml' is a soft dependency and not included in the pycaret installation. Please run: `pip install cuml` to install.
+2024-03-06 16:55:29,235:WARNING:
+'cuml' is a soft dependency and not included in the pycaret installation. Please run: `pip install cuml` to install.
+2024-03-06 16:55:29,235:WARNING:
+'cuml' is a soft dependency and not included in the pycaret installation. Please run: `pip install cuml` to install.
+2024-03-06 16:55:29,560:INFO:Initializing load_model()
+2024-03-06 16:55:29,560:INFO:load_model(model_name=final_pm25_prediction_model, platform=None, authentication=None, verbose=True)
+2024-03-06 16:55:29,723:INFO:Initializing predict_model()
+2024-03-06 16:55:29,723:INFO:predict_model(self=<pycaret.regression.oop.RegressionExperiment object at 0x0000024324CBF1D0>, estimator=Pipeline(memory=Memory(location=None),
+         steps=[('numerical_imputer',
+                 TransformerWrapper(include=['hour', 'day_of_week', 'day',
+                                             'month'],
+                                    transformer=SimpleImputer())),
+                ('categorical_imputer',
+                 TransformerWrapper(include=['stationID'],
+                                    transformer=SimpleImputer(strategy='most_frequent'))),
+                ('onehot_encoding',
+                 TransformerWrapper(include=['stationID'],
+                                    transformer=OneHotEncoder(cols=['stationID'],
+                                                              handle_missing='return_nan',
+                                                              use_cat_names=True))),
+                ('trained_model',
+                 ExtraTreesRegressor(n_jobs=-1, random_state=123))]), probability_threshold=None, encoded_labels=False, raw_score=False, round=4, verbose=True, ml_usecase=None, preprocess=True, encode_labels=<function _SupervisedExperiment.predict_model.<locals>.encode_labels at 0x00000243260E2B60>)
+2024-03-06 16:55:29,723:INFO:Checking exceptions
+2024-03-06 16:55:29,723:INFO:Preloading libraries
+2024-03-06 16:55:29,723:INFO:Set up data.
+2024-03-06 16:55:29,740:INFO:Set up index.
+2024-03-06 16:56:39,118:WARNING:
+'cuml' is a soft dependency and not included in the pycaret installation. Please run: `pip install cuml` to install.
+2024-03-06 16:56:39,118:WARNING:
+'cuml' is a soft dependency and not included in the pycaret installation. Please run: `pip install cuml` to install.
+2024-03-06 16:56:39,118:WARNING:
+'cuml' is a soft dependency and not included in the pycaret installation. Please run: `pip install cuml` to install.
+2024-03-06 16:56:39,118:WARNING:
+'cuml' is a soft dependency and not included in the pycaret installation. Please run: `pip install cuml` to install.
+2024-03-06 16:56:39,375:INFO:Initializing load_model()
+2024-03-06 16:56:39,375:INFO:load_model(model_name=final_pm25_prediction_model, platform=None, authentication=None, verbose=True)
+2024-03-06 16:56:39,534:INFO:Initializing predict_model()
+2024-03-06 16:56:39,534:INFO:predict_model(self=<pycaret.regression.oop.RegressionExperiment object at 0x000001E3ED2B1290>, estimator=Pipeline(memory=Memory(location=None),
+         steps=[('numerical_imputer',
+                 TransformerWrapper(include=['hour', 'day_of_week', 'day',
+                                             'month'],
+                                    transformer=SimpleImputer())),
+                ('categorical_imputer',
+                 TransformerWrapper(include=['stationID'],
+                                    transformer=SimpleImputer(strategy='most_frequent'))),
+                ('onehot_encoding',
+                 TransformerWrapper(include=['stationID'],
+                                    transformer=OneHotEncoder(cols=['stationID'],
+                                                              handle_missing='return_nan',
+                                                              use_cat_names=True))),
+                ('trained_model',
+                 ExtraTreesRegressor(n_jobs=-1, random_state=123))]), probability_threshold=None, encoded_labels=False, raw_score=False, round=4, verbose=True, ml_usecase=None, preprocess=True, encode_labels=<function _SupervisedExperiment.predict_model.<locals>.encode_labels at 0x000001E3EE6C2B60>)
+2024-03-06 16:56:39,534:INFO:Checking exceptions
+2024-03-06 16:56:39,534:INFO:Preloading libraries
+2024-03-06 16:56:39,534:INFO:Set up data.
+2024-03-06 16:56:39,539:INFO:Set up index.

@@ -6,7 +6,7 @@ import numpy as np
 from dash.dependencies import Output, Input
 
 # Incorporate data
-df = pd.read_csv('cleaned_air4thai.csv')
+df = pd.read_csv('predictions.csv')
 
 external_stylesheets = [
     {
