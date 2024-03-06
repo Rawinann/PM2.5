@@ -72,12 +72,18 @@ app.layout = html.Div(
         # ส่วน My Data
         html.Div([
             html.Div(children='My Data', style={'textAlign': 'center'}),
-            dcc.Graph(figure=px.histogram(df, x='PM25', y='TEMP', histfunc='avg')),
+            dcc.Graph(
+                figure=px.scatter(df, x='DATETIMEDATA', y='prediction_label', color='prediction_label')
+                .update_layout(
+                    title='Scatter Plot of Temperature over Time',
+                    xaxis_title='Date and Time',
+                    yaxis_title='Temperature',
+                    legend_title='Prediction Label'
+                )
+            ),
             generate_table(df)
-        ])
-    ]
-)
-
+        ]) 
+    ])
 # Run the app
 if __name__ == '__main__':
     app.run(debug=True)
