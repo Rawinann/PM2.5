@@ -1,8 +1,6 @@
 from dash import Dash, html, dash_table, dcc
 import plotly.express as px
 import pandas as pd
-import dash_bootstrap_components as dbc
-import numpy as np
 from dash.dependencies import Output, Input
 
 # Incorporate data
@@ -47,43 +45,69 @@ app.layout = html.Div(
             className="header",
         ),
         
-        # ส่วน Menu
-        # html.Div(
-        #     children=[
-        #         html.Div(
-        #             children=[
-        #                 html.Div(children="Station ID", className="menu-title"),
-        #                 dcc.Dropdown(
-        #                     id="station-filter",
-        #                     options=[
-        #                         {"label": station, "value": station}
-        #                         for station in np.sort(df['stationID'].unique())
-        #                     ],
-        #                     value="44t หาดใหญ่",
-        #                     clearable=False,
-        #                     className="dropdown",
-        #                 ),
-        #             ]
-        #         ),
-        #     ],
-        #     className="menu",
-        # ),
-
         # ส่วน My Data
         html.Div([
             html.Div(children='My Data', style={'textAlign': 'center'}),
-            dcc.Graph(
-                figure=px.scatter(df, x='DATETIMEDATA', y='prediction_label', color='prediction_label')
-                .update_layout(
-                    title='Scatter Plot of Temperature over Time',
-                    xaxis_title='Date and Time',
-                    yaxis_title='Temperature',
-                    legend_title='Prediction Label'
-                )
-            ),
+            
+            # เพิ่มปุ่มเลือกกราฟ
+            html.Div([
+                dcc.RadioItems(
+                    id='graph-selector',
+                    options=[
+                        {'label': 'Scatter Plot', 'value': 'scatter'},
+                        {'label': 'Bar Chart', 'value': 'bar'},
+                        # เพิ่มตัวเลือกกราฟเพิ่มเติมตามต้องการ
+                    ],
+                    value='scatter',  # ตั้งค่าค่าเริ่มต้น
+                    labelStyle={'display': 'block'}
+                ),
+            ]),
+            
+            # ให้กราฟแสดงตามที่ผู้ใช้เลือก
+            dcc.Graph(id='selected-graph'),
+            
+            # แสดงตาราง
             generate_table(df)
         ]) 
     ])
+
+# เพิ่ม callback function สำหรับอัปเดตกราฟ
+@app.callback(
+    Output('selected-graph', 'figure'),
+    [Input('graph-selector', 'value')]
+)
+def update_graph(selected_graph):
+    if selected_graph == 'scatter':
+        # สร้าง Scatter Plot
+        fig = px.scatter(df, x='DATETIMEDATA', y='prediction_label', color='prediction_label')
+        fig.update_layout(
+            title='Scatter Plot of Temperature over Time',
+            xaxis_title='Date and Time',
+            yaxis_title='Temperature',
+            legend_title='Prediction Label'
+        )
+    elif selected_graph == 'bar':
+        # สร้าง Bar Chart
+        fig = px.bar(df, x='DATETIMEDATA', y='prediction_label', color='prediction_label')
+        fig.update_layout(
+            title='Bar Chart of Temperature over Time',
+            xaxis_title='Date and Time',
+            yaxis_title='Temperature',
+            legend_title='Prediction Label'
+        )
+    # เพิ่มกราฟเพิ่มเติมตามต้องการ
+    else:
+        # กรณีที่ไม่ตรงกับทางเลือกที่กำหนดไว้
+        fig = px.scatter(df, x='DATETIMEDATA', y='prediction_label', color='prediction_label')
+        fig.update_layout(
+            title='Scatter Plot of Temperature over Time',
+            xaxis_title='Date and Time',
+            yaxis_title='Temperature',
+            legend_title='Prediction Label'
+        )
+    
+    return fig
+
 # Run the app
 if __name__ == '__main__':
     app.run(debug=True)
