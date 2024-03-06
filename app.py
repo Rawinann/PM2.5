@@ -16,7 +16,7 @@ external_stylesheets = [
     },
 ]
 
-def generate_table(dataframe, max_rows=10):
+def generate_table(dataframe, max_rows=20):
     return dash_table.DataTable(
         columns=[{'name': col, 'id': col} for col in dataframe.columns],
         data=dataframe.to_dict('records'),
@@ -59,7 +59,7 @@ app.layout = html.Div(
                                 {"label": station, "value": station}
                                 for station in np.sort(df['stationID'].unique())
                             ],
-                            value="44t",
+                            value="44t หาดใหญ่",
                             clearable=False,
                             className="dropdown",
                         ),
