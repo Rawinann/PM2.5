@@ -16,7 +16,7 @@ external_stylesheets = [
     },
 ]
 
-def generate_table(dataframe, max_rows=20):
+def generate_table(dataframe, max_rows=30):
     return dash_table.DataTable(
         columns=[{'name': col, 'id': col} for col in dataframe.columns],
         data=dataframe.to_dict('records'),
