@@ -18,7 +18,7 @@ future_data['day'] = future_data['DATETIMEDATA'].dt.day
 future_data['month'] = future_data['DATETIMEDATA'].dt.month
 
 # เพิ่ม stationID เข้าไปใน future_data
-future_data['stationID'] = '44t'  # แทน 'your_station_id' ด้วยค่าที่ถูกต้อง
+# future_data['stationID'] = '44t'  # แทน 'your_station_id' ด้วยค่าที่ถูกต้อง
 
 # ตรวจสอบ future_data
 print(future_data.head())
