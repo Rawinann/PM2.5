@@ -4,7 +4,7 @@ import pandas as pd
 from dash.dependencies import Output, Input
 
 # Incorporate data
-df = pd.read_csv('data/predictions.csv')
+df = pd.read_csv('PM2.5/data/predictions.csv')
 
 external_stylesheets = [
     {
