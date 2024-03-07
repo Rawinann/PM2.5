@@ -47,7 +47,7 @@ app.layout = html.Div(
         
         # ส่วน My Data
         html.Div([
-            html.Div(children='My Data', style={'textAlign': 'center'}),
+            html.Div(children='Data in HatYai', style={'textAlign': 'center'}),
             
             # เพิ่มปุ่มเลือกกราฟ
             html.Div([
