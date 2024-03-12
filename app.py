@@ -55,12 +55,13 @@ app.layout = html.Div(
                         dcc.Dropdown(
                             id="file-selector",
                             options=[
-                                {'label': 'Daily Predict', 'value': 'daily'},
-                                {'label': 'Hourly Predict', 'value': 'hourly'},
+                                {'label': 'Daily', 'value': 'daily'},
+                                {'label': 'Hourly', 'value': 'hourly'},
                             ],
                             value='daily', 
                             clearable=False,
                             className="dropdown",
+                            style={'text-align': 'center'},
                         ),
                     ]
                 ),
@@ -110,9 +111,10 @@ def update_graph(selected_graph, selected_file):
         # สร้าง Scatter Plot
         fig = px.scatter(df, x='DATETIMEDATA', y='prediction_label', color='prediction_label')
         fig.update_layout(
-            title='Scatter Plot of Temperature over Time',
-            xaxis_title='Date and Time',
-            yaxis_title='Temperature',
+            title='PM2.5 Analysis',
+            title_x=0.5,
+            xaxis_title='Date',
+            yaxis_title='Value of PM2.5',
             legend_title='Prediction Label'
         )
     # เพิ่มกราฟเพิ่มเติมตามต้องการ
@@ -120,9 +122,10 @@ def update_graph(selected_graph, selected_file):
         # สร้าง Bar Chart
         fig = px.bar(df, x='DATETIMEDATA', y='prediction_label', color='prediction_label')
         fig.update_layout(
-            title='Bar Chart of Temperature over Time',
-            xaxis_title='Date and Time',
-            yaxis_title='Temperature',
+            title='PM2.5 Analysis',
+            title_x=0.5,
+            xaxis_title='Date',
+            yaxis_title='Value of PM2.5',
             legend_title='Prediction Label'
         )
     # เพิ่มกราฟเพิ่มเติมตามต้องการ
@@ -130,9 +133,10 @@ def update_graph(selected_graph, selected_file):
         # กรณีที่ไม่ตรงกับทางเลือกที่กำหนดไว้
         fig = px.scatter(df, x='DATETIMEDATA', y='prediction_label', color='prediction_label')
         fig.update_layout(
-            title='Scatter Plot of Temperature over Time',
-            xaxis_title='Date and Time',
-            yaxis_title='Temperature',
+            title='PM2.5 Analysis',
+            title_x=0.5,
+            xaxis_title='Date',
+            yaxis_title='Value of PM2.5',
             legend_title='Prediction Label'
         )
     
