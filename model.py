@@ -1,7 +1,7 @@
 from pycaret.regression import *
 import pandas as pd
 
-# โหลดข้อมูลที่คุณคลีนแล้ว
+# โหลดข้อมูลที่คุณclearแล้ว
 data = pd.read_csv('cleaned_air4thai.csv')
 
 # ตรวจสอบว่ามีคอลัมน์ 'DATETIMEDATA' ในข้อมูลหรือไม่
