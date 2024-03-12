@@ -53,8 +53,12 @@ app.layout = html.Div(
                     children=[
                         html.Div(children="predict-selector", className="menu-title"),
                         dcc.Dropdown(
-                            id="station-filter",
-
+                            id="file-selector",
+                            options=[
+                                {'label': 'Daily Predict', 'value': 'daily'},
+                                {'label': 'Hourly Predict', 'value': 'hourly'},
+                            ],
+                            value='daily', 
                             clearable=False,
                             className="dropdown",
                         ),
@@ -93,9 +97,15 @@ app.layout = html.Div(
 # เพิ่ม callback function สำหรับอัปเดตกราฟ
 @app.callback(
     Output('selected-graph', 'figure'),
-    [Input('graph-selector', 'value')]
+    [Input('graph-selector', 'value'),
+     Input('file-selector', 'value')]
 )
-def update_graph(selected_graph):
+def update_graph(selected_graph, selected_file):
+    if selected_file == 'daily':
+        df = pd.read_csv('PM2.5/data/Daily_predict.csv')
+    else:
+        df = pd.read_csv('PM2.5/data/Hourly_predict.csv')
+        
     if selected_graph == 'scatter':
         # สร้าง Scatter Plot
         fig = px.scatter(df, x='DATETIMEDATA', y='prediction_label', color='prediction_label')
@@ -105,6 +115,7 @@ def update_graph(selected_graph):
             yaxis_title='Temperature',
             legend_title='Prediction Label'
         )
+    # เพิ่มกราฟเพิ่มเติมตามต้องการ
     elif selected_graph == 'bar':
         # สร้าง Bar Chart
         fig = px.bar(df, x='DATETIMEDATA', y='prediction_label', color='prediction_label')
