@@ -2,9 +2,11 @@ from dash import Dash, html, dash_table, dcc
 import plotly.express as px
 import pandas as pd
 from dash.dependencies import Output, Input
+import dash_bootstrap_components as dbc
+import numpy as np
 
 # Incorporate data
-df = pd.read_csv('PM2.5/data/predictions.csv')
+df = pd.read_csv('PM2.5/data/Daily_predict.csv')
 
 external_stylesheets = [
     {
@@ -44,10 +46,27 @@ app.layout = html.Div(
             ],
             className="header",
         ),
+                # ส่วน Menu
+        html.Div(
+            children=[
+                html.Div(
+                    children=[
+                        html.Div(children="predict-selector", className="menu-title"),
+                        dcc.Dropdown(
+                            id="station-filter",
+
+                            clearable=False,
+                            className="dropdown",
+                        ),
+                    ]
+                ),
+            ],
+            className="menu",
+        ),
         
         # ส่วน My Data
         html.Div([
-            html.Div(children='Data in HatYai', style={'textAlign': 'center'}),
+            html.Div(children='Data in HatYai', style={'textAlign': 'center', 'font-weight': 'bold', 'font-size': '24px'}),
             
             # เพิ่มปุ่มเลือกกราฟ
             html.Div([
