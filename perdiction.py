@@ -26,7 +26,6 @@ print(future_data.head())
 # โหลดโมเดลที่บันทึกไว้
 final_model = load_model('PM2.5/model/final_pm25_prediction_model')
 
-
 # ทำนายค่า PM2.5 ในอนาคต
 predictions = predict_model(final_model, data=future_data)
 
