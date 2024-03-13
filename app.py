@@ -6,7 +6,7 @@ import dash_bootstrap_components as dbc
 import numpy as np
 
 # Incorporate data
-df = pd.read_csv('PM2.5/data/Daily_predict.csv')
+df = pd.read_csv('PM2.5/data/Daily_predict_2.csv')
 
 external_stylesheets = [
     {
@@ -104,9 +104,9 @@ app.layout = html.Div(
 )
 def update_graph(selected_graph, selected_file):
     if selected_file == 'daily':
-        df = pd.read_csv('PM2.5/data/Daily_predict.csv')
+        df = pd.read_csv('PM2.5/data/Daily_predict_2.csv')
     else:
-        df = pd.read_csv('PM2.5/data/Hourly_predict.csv')
+        df = pd.read_csv('PM2.5/data/Hourly_predict_2.csv')
         
     if selected_graph == 'scatter':
         # สร้าง Scatter Plot

@@ -3,7 +3,7 @@ from datetime import datetime, timedelta
 from pycaret.regression import load_model, predict_model
 
 # สมมติว่าวันสุดท้ายในชุดข้อมูลของคุณคือ '2024-01-02'
-last_date_in_dataset = datetime(2024, 3, 3)
+last_date_in_dataset = datetime(2024, 3, 9)
 
 # สร้างช่วงเวลาสำหรับ 7 วันข้างหน้า, ทุก ๆ ชั่วโมง
 future_dates = [last_date_in_dataset + timedelta(days=i, hours=h) for i in range(1, 8) for h in range(24)]
@@ -32,7 +32,7 @@ predictions = predict_model(final_model, data=future_data)
 # แสดงผลลัพธ์การทำนาย
 print(predictions)
 # บันทึกผลลัพธ์เป็นไฟล์ CSV
-predictions.to_csv("PM2.5/data/Hourly_predict.csv", index=False)
+predictions.to_csv("PM2.5/data/Hourly_predict_2.csv", index=False)
 
 
 
@@ -61,4 +61,4 @@ for i in range(0, num_rows, 24):  # รวมข้อมูลทุก 24 แ�
 print(daily_predictions)
 
 # บันทึกข้อมูลทำนายรายวันเป็นไฟล์ CSV
-daily_predictions.to_csv("PM2.5/data/Daily_predict.csv", index=False)
+daily_predictions.to_csv("PM2.5/data/Daily_predict_2.csv", index=False)

@@ -1,6 +1,6 @@
 import pandas as pd
 
-df = pd.read_csv('air4thai_44t_2023-09-01_2024-02-27.csv')
+df = pd.read_csv('PM2.5/data/air4thai_44t_2024-01-01_2024-03-12.csv')
 
 print("Initial Data:")
 print(df)
@@ -19,7 +19,7 @@ df[numeric_columns] = df[numeric_columns].apply(lambda x: x.fillna(x.mean()))
 df.drop(inplace=True, columns=['stationID'])
 
 # Save the cleaned data to a new CSV file
-df.to_csv('cleaned_air4thai.csv', index=False)
+df.to_csv('cleaned_air4thai_2.csv', index=False)
 
 print("\nCleaned Data:")
 print(df)

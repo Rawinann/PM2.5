@@ -2,7 +2,7 @@ from pycaret.regression import *
 import pandas as pd
 
 # โหลดข้อมูลที่คุณclearแล้ว
-data = pd.read_csv('cleaned_air4thai.csv')
+data = pd.read_csv('cleaned_air4thai_2.csv')
 
 # ตรวจสอบว่ามีคอลัมน์ 'DATETIMEDATA' ในข้อมูลหรือไม่
 if 'DATETIMEDATA' in data.columns:
@@ -35,4 +35,4 @@ tuned_model = tune_model(created_model)
 evaluate_model(tuned_model)
 
 # บันทึกโมเดล
-save_model(tuned_model, 'final_pm25_prediction_model')
+save_model(tuned_model, 'final_pm25_prediction_model_2')
