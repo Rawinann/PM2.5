@@ -80,7 +80,7 @@ app.layout = html.Div(
                     options=[
                         {'label': 'Scatter Plot', 'value': 'scatter'},
                         {'label': 'Bar Chart', 'value': 'bar'},
-                        # {'label': 'Line Plot', 'value': 'line'},
+                        {'label': 'Line Plot', 'value': 'line'}
                         # เพิ่มตัวเลือกกราฟเพิ่มเติมตามต้องการ
                     ],
                     value='scatter',  # ตั้งค่าค่าเริ่มต้น
@@ -100,7 +100,7 @@ app.layout = html.Div(
 @app.callback(
     Output('selected-graph', 'figure'),
     [Input('graph-selector', 'value'),
-     Input('file-selector', 'value')]
+    Input('file-selector', 'value')]
 )
 def update_graph(selected_graph, selected_file):
     if selected_file == 'daily':
@@ -129,16 +129,17 @@ def update_graph(selected_graph, selected_file):
             yaxis_title='Value of PM2.5',
             legend_title='Prediction Label'
         )
-    # elif selected_graph == 'line':
-    #     fig = px.line(df, x='DATETIMEDATA', y='prediction_label', color='prediction_label')
-    #     fig.update_traces(line=dict(dash='solid'))
-    #     fig.update_layout(
-    #         title='PM2.5 Analysis',
-    #         title_x=0.5,
-    #         xaxis_title='Date',
-    #         yaxis_title='Value of PM2.5',
-    #         legend_title='Prediction Label',
-    #     )
+    elif selected_graph == 'line':
+        fig = px.line(df, x='DATETIMEDATA', y='prediction_label')
+        fig.update_layout(
+            title='PM2.5 Analysis',
+            title_x=0.5,
+            xaxis_title='Date',
+            yaxis_title='Value of PM2.5',
+            legend_title='Prediction Label'
+        ) 
+
+
     # เพิ่มกราฟเพิ่มเติมตามต้องการ
     else:
         # กรณีที่ไม่ตรงกับทางเลือกที่กำหนดไว้
