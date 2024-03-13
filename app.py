@@ -6,8 +6,8 @@ import dash_bootstrap_components as dbc
 import numpy as np
 
 # Incorporate data
-df = pd.read_csv('PM2.5/data/Daily_predict_2.csv')
-
+df_hourly = pd.read_csv('PM2.5/data/Hourly_predict_2.csv')
+df_daily = pd.read_csv('PM2.5/data/Daily_predict_2.csv')
 external_stylesheets = [
     {
         "href": "https://fonts.googleapis.com/css2?"
@@ -16,11 +16,15 @@ external_stylesheets = [
     },
 ]
 
-def generate_table(dataframe, max_rows=30):
+def generate_table(dataframe, max_rows=24):
+    columns_to_display = ['DATETIMEDATA',  'prediction_label']
     return dash_table.DataTable(
-        columns=[{'name': col, 'id': col} for col in dataframe.columns],
-        data=dataframe.to_dict('records'),
-        page_size=max_rows
+        id='data-table',
+        columns=[{'name': col, 'id': col} for col in columns_to_display],
+        data=dataframe[columns_to_display].to_dict('records'),
+        page_size=max_rows,
+        style_cell={'textAlign': 'center'},
+        style_table={'overflowX': 'auto', 'marginTop': '30px'}
     )
 
 # Initialize the app
@@ -92,13 +96,15 @@ app.layout = html.Div(
             dcc.Graph(id='selected-graph'),
             
             # แสดงตาราง
-            generate_table(df)
-        ]) 
+            generate_table(df_daily),
+        ],
+        style={'width': '80%', 'margin': 'auto'}),  # ปรับขนาดตารางทั้งหมด 
     ])
 
 # เพิ่ม callback function สำหรับอัปเดตกราฟ
 @app.callback(
-    Output('selected-graph', 'figure'),
+    [Output('selected-graph', 'figure'),
+     Output('data-table', 'data')],
     [Input('graph-selector', 'value'),
     Input('file-selector', 'value')]
 )
@@ -151,8 +157,11 @@ def update_graph(selected_graph, selected_file):
             yaxis_title='Value of PM2.5',
             legend_title='Prediction Label'
         )
+
+    columns_to_display = ['DATETIMEDATA', 'prediction_label']
+    data_table = df[columns_to_display].to_dict('records')
     
-    return fig
+    return fig, data_table
 
 # Run the app
 if __name__ == '__main__':
