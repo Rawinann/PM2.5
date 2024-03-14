@@ -117,7 +117,8 @@ def update_graph(selected_graph, selected_file):
             title_x=0.5,
             xaxis_title='Date',
             yaxis_title='Value of PM2.5',
-            legend_title='Prediction Label'
+            legend_title='Prediction Label',
+            plot_bgcolor='#f7f7f7'
         )
     # เพิ่มกราฟเพิ่มเติมตามต้องการ
     elif selected_graph == 'bar':
@@ -128,7 +129,8 @@ def update_graph(selected_graph, selected_file):
             title_x=0.5,
             xaxis_title='Date',
             yaxis_title='Value of PM2.5',
-            legend_title='Prediction Label'
+            legend_title='Prediction Label',
+            plot_bgcolor='#f7f7f7'
         )
     elif selected_graph == 'line':
         fig = px.line(df, x='DATETIMEDATA', y='prediction_label')
@@ -137,7 +139,8 @@ def update_graph(selected_graph, selected_file):
             title_x=0.5,
             xaxis_title='Date',
             yaxis_title='Value of PM2.5',
-            legend_title='Prediction Label'
+            legend_title='Prediction Label',
+            plot_bgcolor='#f7f7f7'
         ) 
 
 
@@ -150,7 +153,8 @@ def update_graph(selected_graph, selected_file):
             title_x=0.5,
             xaxis_title='Date',
             yaxis_title='Value of PM2.5',
-            legend_title='Prediction Label'
+            legend_title='Prediction Label',
+            plot_bgcolor='#FFFFFF'
         )
 
     columns_to_display = ['DATETIMEDATA', 'prediction_label']
