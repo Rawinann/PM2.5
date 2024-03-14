@@ -8,13 +8,7 @@ import numpy as np
 # Incorporate data
 df_hourly = pd.read_csv('PM2.5/data/Hourly_predict_2.csv')
 df_daily = pd.read_csv('PM2.5/data/Daily_predict_2.csv')
-external_stylesheets = [
-    {
-        "href": "https://fonts.googleapis.com/css2?"
-        "family=Lato:wght@400;700&display=swap",
-        "rel": "stylesheet",
-    },
-]
+
 
 def generate_table(dataframe, max_rows=24):
     columns_to_display = ['DATETIMEDATA',  'prediction_label']
@@ -28,7 +22,7 @@ def generate_table(dataframe, max_rows=24):
     )
 
 # Initialize the app
-app = Dash(__name__, external_stylesheets=external_stylesheets)
+app = Dash(__name__)
 
 server = app.server
 app.title = "Air Quality Analytics: Understand Your Air Quality!"
@@ -38,7 +32,7 @@ app.layout = html.Div(
         # ส่วน Header
         html.Div(
             children=[
-                html.P(children="🌬️", className="header-emoji"),
+                html.P(children="💨", className="header-emoji"),
                 html.H1(
                     children="Air Quality Analytics", className="header-title"
                 ),
@@ -75,7 +69,7 @@ app.layout = html.Div(
         
         # ส่วน My Data
         html.Div([
-            html.Div(children='Data in HatYai', style={'textAlign': 'center', 'font-weight': 'bold', 'font-size': '24px'}),
+            html.Div(children='Data in HatYai (44t)', style={'textAlign': 'center', 'font-weight': 'bold', 'font-size': '24px', 'margin-top': '20px'}),
             
             # เพิ่มปุ่มเลือกกราฟ
             html.Div([
