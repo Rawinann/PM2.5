@@ -1,1 +1,1 @@
-{'label': 'Line Plot', 'value': 'line'},
+html.P(children="💨", className="header-emoji"),

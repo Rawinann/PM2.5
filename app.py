@@ -34,12 +34,13 @@ app.layout = html.Div(
             children=[
                 html.P(children="💨", className="header-emoji"),
                 html.H1(
-                    children="Air Quality Analytics", className="header-title"
+                    children="Air Quality Analytics", className="header-title",style={'color': '#222222'}
                 ),
                 html.P(
                     children="Analyze the air quality data"
                     " with various parameters",
                     className="header-description",
+                    style={'color': '#222222'}
                 ),
             ],
             className="header",

@@ -5,7 +5,8 @@ body {
 }
 
 .header {
-    background-color: #222222;
+    background-image: url('PM2.5.webp');
+    background-size: cover;
     height: 280px;
     padding: 16px 0 0 0;
 }
@@ -72,5 +73,5 @@ body {
 .menu-title {
     margin-bottom: 6px;
     font-weight: bold;
-    color: #079A82;
+    color: #222222;
 }
